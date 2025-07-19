@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <title>Hindi Voice Note Generator</title>
+</head>
+<body>
+    <h1>हिंदी में टेक्स्ट बोलकर सुनें</h1>
+    <form action="/speak" method="post">
+        <textarea name="text" rows="4" cols="50" placeholder="अपना टेक्स्ट यहाँ लिखें..."></textarea><br>
+        <button type="submit">बोलें</button>
+    </form>
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+    {% if audio_file %}
+        <h3>बोला गया वॉइस:</h3>
+        <audio controls autoplay>
+            <source src="{{ audio_file }}" type="audio/mpeg">
+            आपका ब्राउज़र ऑडियो सपोर्ट नहीं करता।
+        </audio>
+    {% endif %}
+</body>
+</html>
